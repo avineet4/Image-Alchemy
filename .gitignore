@@ -47,6 +47,7 @@ Image_Alchemy.swiftpm/.build/index-build/arm64-apple-macosx/debug/index/db/v13/p
 Image_Alchemy.swiftpm/.swiftpm/xcode/package.xcworkspace/xcuserdata/avineetsingh.xcuserdatad/UserInterfaceState.xcuserstate
 .DS_Store
 *.md
+!README.md
 Illustrations/Components/AttentionHead.swift
 Illustrations/Components/Matrix.swift
 Illustrations/Components/TokenList.swift
