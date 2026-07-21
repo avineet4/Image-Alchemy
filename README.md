@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="README-logo.svg" alt="Image Alchemy logo" width="180" />
+  <img src="README-logo.png" alt="Image Alchemy logo" width="180" />
 
   # Image Alchemy
 
