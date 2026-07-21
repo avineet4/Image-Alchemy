@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="rounded-corners">
+      <rect width="1024" height="1024" rx="269" ry="269" />
+    </clipPath>
+  </defs>
+  <image href="Image_Alchemy.swiftpm/Media.xcassets/IconLight.imageset/Image_Alchemy-iOS-Default-1024x1024@1x.png" width="1024" height="1024" clip-path="url(#rounded-corners)" preserveAspectRatio="xMidYMid slice" />
+  <rect x="1" y="1" width="1022" height="1022" rx="269" ry="269" fill="none" stroke="#666666" stroke-opacity="0.8" stroke-width="2" />
+</svg>
