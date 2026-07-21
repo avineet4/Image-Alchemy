@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="Image_Alchemy.swiftpm/Media.xcassets/IconLight.imageset/Image_Alchemy-iOS-Default-1024x1024@1x.png" alt="Image Alchemy logo" width="180" />
+  <img src="Image_Alchemy.swiftpm/Media.xcassets/IconLight.imageset/Image_Alchemy-iOS-Default-1024x1024@1x.png" alt="Image Alchemy logo" width="180" style="border-radius: 28%;" />
 
   # Image Alchemy
 
