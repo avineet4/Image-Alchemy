@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="rounded-corners">
+      <rect width="1024" height="1024" rx="220" ry="220" />
+    </clipPath>
+  </defs>
+  <image href="Image_Alchemy-iOS-Default-1024x1024@1x.png" width="1024" height="1024" clip-path="url(#rounded-corners)" preserveAspectRatio="xMidYMid slice" />
+</svg>
