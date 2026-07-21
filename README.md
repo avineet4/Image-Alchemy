@@ -14,6 +14,18 @@ Image Alchemy turns the diffusion pipeline into something learners can see, mani
 
 The project is designed as an educational experience, not as a production text-to-image generator. Its emphasis is understanding the ideas behind modern diffusion systems through interaction.
 
+## Inspiration
+
+When I first started learning about AI image generation, I was fascinated by the results but frustrated by the explanations. Articles often skipped straight to the math, videos jumped between equations, and visualizations simplified the process so much that it felt like magic instead of engineering.
+
+I learn best by building and interacting with ideas, so I kept asking myself:
+
+> **“What if I could watch a diffusion model think?”**
+
+That question became the foundation of Image Alchemy. By combining my interests in machine learning and iOS development, I wanted to build an educational experience rather than another black-box image generator—one that could help people reach the moment when diffusion models stop feeling mysterious and start making sense.
+
+The app is shaped by a simple belief: difficult ideas become approachable when people can see them, touch them, and experiment with them.
+
 ## Learning paths
 
 ### Full pipeline
