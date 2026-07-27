@@ -291,7 +291,7 @@ private struct NoiseScheduleNoiseOverlay: View {
     
     private static let seed = 88
     private static var positions: [(x: CGFloat, y: CGFloat, r: CGFloat)] = {
-        var g = NoiseScheduleSeededRandom(seed: seed)
+        var g = SeededRandom(seed: seed)
         return (0..<120).map { _ in
             (x: CGFloat(g.next()), y: CGFloat(g.next()), r: CGFloat(0.5 + g.next() * 1.2))
         }
@@ -311,15 +311,6 @@ private struct NoiseScheduleNoiseOverlay: View {
                 }
             }
         }
-    }
-}
-
-private struct NoiseScheduleSeededRandom {
-    private var state: UInt64
-    init(seed: Int) { state = UInt64(truncatingIfNeeded: seed) }
-    mutating func next() -> Double {
-        state = state &* 6364136223846793005 &+ 1442695040888963407
-        return Double(state >> 11) / Double(UInt64.max >> 11)
     }
 }
 

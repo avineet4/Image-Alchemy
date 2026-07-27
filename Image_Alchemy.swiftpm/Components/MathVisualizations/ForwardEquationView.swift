@@ -354,15 +354,6 @@ private struct ForwardNoiseOverlay: View {
     }
 }
 
-private struct SeededRandom {
-    private var state: UInt64
-    init(seed: Int) { state = UInt64(truncatingIfNeeded: seed) }
-    mutating func next() -> Double {
-        state = state &* 6364136223846793005 &+ 1442695040888963407
-        return Double(state >> 11) / Double(UInt64.max >> 11)
-    }
-}
-
 // Tappable equation part button with subtle pulse when selected
 private struct EquationPartButton: View {
     let text: String
