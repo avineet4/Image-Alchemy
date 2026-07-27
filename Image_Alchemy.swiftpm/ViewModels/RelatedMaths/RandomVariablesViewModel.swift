@@ -42,7 +42,9 @@ final class RandomVariablesViewModel {
             if samples.count > maxSamples { samples.removeLast() }
             lastDrawnSample = newSample
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+        Task { [weak self] in
+            try? await Task.sleep(for: .seconds(0.5))
+            guard !Task.isCancelled else { return }
             self?.isDrawingSample = false
         }
     }
