@@ -636,21 +636,21 @@ private struct VAEDecoderNodeDiagramPreview: View {
                 // Latent nodes
                 ForEach(0..<latentCount, id: \.self) { i in
                     let y = latentSpacing * CGFloat(i + 1)
-                    decoderNode(isActive: false, color: .cyan, activeScale: 1.0)
+                    DecoderNetworkNode(isActive: false, color: .cyan, activeScale: 1.0)
                         .position(x: latentX, y: y)
                 }
 
                 // Hidden feature nodes
                 ForEach(0..<hiddenCount, id: \.self) { j in
                     let y = hiddenSpacing * CGFloat(j + 1)
-                    decoderNode(isActive: false, color: .cyan, activeScale: 1.0)
+                    DecoderNetworkNode(isActive: false, color: .cyan, activeScale: 1.0)
                         .position(x: hiddenX, y: y)
                 }
 
                 // Pixel feature nodes
                 ForEach(0..<pixelCount, id: \.self) { k in
                     let y = pixelSpacing * CGFloat(k + 1)
-                    decoderNode(isActive: false, color: .cyan, activeScale: 1.0)
+                    DecoderNetworkNode(isActive: false, color: .cyan, activeScale: 1.0)
                         .position(x: pixelX, y: y)
                 }
 
@@ -671,19 +671,6 @@ private struct VAEDecoderNodeDiagramPreview: View {
         }
     }
 
-    @ViewBuilder
-    private func decoderNode(isActive: Bool, color: Color, activeScale: CGFloat) -> some View {
-        Circle()
-            .stroke(isActive ? color : color.opacity(0.5), lineWidth: 2)
-            .background(
-                Circle().fill(
-                    isActive ? color.opacity(0.18) : Color.white
-                )
-            )
-            .frame(width: 24, height: 24)
-            .scaleEffect(isActive ? activeScale : 1.0)
-            .shadow(color: isActive ? color.opacity(0.4) : .clear, radius: 4, y: 2)
-    }
 }
 
 // MARK: - Related Maths card 3D chart preview

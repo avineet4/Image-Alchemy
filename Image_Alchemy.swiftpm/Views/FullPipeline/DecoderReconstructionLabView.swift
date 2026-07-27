@@ -448,7 +448,7 @@ private struct VAEDecoderNodeDiagram: View {
                 ForEach(0..<latentCount, id: \.self) { i in
                     let y = latentSpacing * CGFloat(i + 1)
                     let isActive = (i == activeLatentIndex)
-                    decoderNode(isActive: isActive, color: .cyan, activeScale: 1.12)
+                    DecoderNetworkNode(isActive: isActive, color: .cyan, activeScale: 1.12)
                         .position(x: latentX, y: y)
                 }
 
@@ -456,7 +456,7 @@ private struct VAEDecoderNodeDiagram: View {
                 ForEach(0..<hiddenCount, id: \.self) { j in
                     let y = hiddenSpacing * CGFloat(j + 1)
                     let isActiveHidden = (j == (activeLatentIndex % hiddenCount))
-                    decoderNode(isActive: isActiveHidden, color: .cyan, activeScale: 1.08)
+                    DecoderNetworkNode(isActive: isActiveHidden, color: .cyan, activeScale: 1.08)
                         .position(x: hiddenX, y: y)
                 }
 
@@ -464,7 +464,7 @@ private struct VAEDecoderNodeDiagram: View {
                 ForEach(0..<pixelCount, id: \.self) { k in
                     let y = pixelSpacing * CGFloat(k + 1)
                     let isActivePixel = (k == (activeLatentIndex % pixelCount))
-                    decoderNode(isActive: isActivePixel, color: .cyan, activeScale: 1.08)
+                    DecoderNetworkNode(isActive: isActivePixel, color: .cyan, activeScale: 1.08)
                         .position(x: pixelX, y: y)
                 }
 
@@ -492,20 +492,6 @@ private struct VAEDecoderNodeDiagram: View {
                 }
             }
         }
-    }
-
-    @ViewBuilder
-    private func decoderNode(isActive: Bool, color: Color, activeScale: CGFloat) -> some View {
-        Circle()
-            .stroke(isActive ? color : color.opacity(0.5), lineWidth: 2)
-            .background(
-                Circle().fill(
-                    isActive ? color.opacity(0.18) : Color.white
-                )
-            )
-            .frame(width: 24, height: 24)
-            .scaleEffect(isActive ? activeScale : 1.0)
-            .shadow(color: isActive ? color.opacity(0.4) : .clear, radius: 4, y: 2)
     }
 
     // Duration multiplier: after every 8 steps, animations get faster (smaller = faster).
@@ -607,4 +593,3 @@ private struct Triangle: Shape {
 #Preview {
     DecoderReconstructionLabView()
 }
-

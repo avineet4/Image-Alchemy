@@ -698,19 +698,19 @@ private struct PipelineDecoderNodeDiagramPreview: View {
                 // Nodes
                 ForEach(0..<latentCount, id: \.self) { i in
                     let y = latentSpacing * CGFloat(i + 1)
-                    decoderNode(isActive: i == activeLatentIndex, color: .cyan, activeScale: 1.12)
+                    DecoderNetworkNode(isActive: i == activeLatentIndex, color: .cyan, activeScale: 1.12, size: nodeRadius * 2)
                         .position(x: latentX, y: y)
                 }
 
                 ForEach(0..<hiddenCount, id: \.self) { j in
                     let y = hiddenSpacing * CGFloat(j + 1)
-                    decoderNode(isActive: j == (activeLatentIndex % hiddenCount), color: .cyan, activeScale: 1.08)
+                    DecoderNetworkNode(isActive: j == (activeLatentIndex % hiddenCount), color: .cyan, activeScale: 1.08, size: nodeRadius * 2)
                         .position(x: hiddenX, y: y)
                 }
 
                 ForEach(0..<pixelCount, id: \.self) { k in
                     let y = pixelSpacing * CGFloat(k + 1)
-                    decoderNode(isActive: k == (activeLatentIndex % pixelCount), color: .cyan, activeScale: 1.08)
+                    DecoderNetworkNode(isActive: k == (activeLatentIndex % pixelCount), color: .cyan, activeScale: 1.08, size: nodeRadius * 2)
                         .position(x: pixelX, y: y)
                 }
 
@@ -735,20 +735,6 @@ private struct PipelineDecoderNodeDiagramPreview: View {
             hasStartedAnimations = true
             await runLoopingAnimations()
         }
-    }
-
-    @ViewBuilder
-    private func decoderNode(isActive: Bool, color: Color, activeScale: CGFloat) -> some View {
-        Circle()
-            .stroke(isActive ? color : color.opacity(0.5), lineWidth: 2)
-            .background(
-                Circle().fill(
-                    isActive ? color.opacity(0.18) : Color.white
-                )
-            )
-            .frame(width: nodeRadius * 2, height: nodeRadius * 2)
-            .scaleEffect(isActive ? activeScale : 1.0)
-            .shadow(color: isActive ? color.opacity(0.4) : .clear, radius: 4, y: 2)
     }
 
     private func runLoopingAnimations() async {
