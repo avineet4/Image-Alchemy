@@ -339,20 +339,3 @@ final class FillInTheBlanksViewModel {
         return FillInBlankQuestion(segments: segments, answers: answers)
     }
 }
-
-// MARK: - Verification (run in tests or debug to validate blank-carving)
-
-extension FillInTheBlanksViewModel {
-    /// Runs a known paragraph through blank-carving and returns the question if valid. Use to verify the flow without the model.
-    static func verifyBlankCarving(paragraph: String) -> FillInBlankQuestion? {
-        let vm = FillInTheBlanksViewModel()
-        return vm.introduceBlanksWithRestrictions(paragraph: paragraph)
-    }
-
-    /// Sample paragraph that should yield multiple blanks from blankableTerms (e.g. diffusion, U-Net, noise schedule).
-    static let sampleParagraphForVerification = """
-    The forward diffusion process starts with an image and adds noise over many timesteps. \
-    A trained U-Net then predicts the noise at each step so it can be removed. \
-    The noise schedule βₜ controls how much noise is added during training.
-    """
-}
