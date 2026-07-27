@@ -53,9 +53,9 @@ final class FullPipelineViewModel {
 
     var overviewDragAccumulatedOffset: CGSize = .zero
 
-    var architectureScale: CGFloat = 1.40
+    var architectureScale: CGFloat = 1.35
 
-    static let defaultArchitectureScale: CGFloat = 1.40
+    static let defaultArchitectureScale: CGFloat = 1.35
     static let minArchitectureScale: CGFloat = 0.6
     static let maxArchitectureScale: CGFloat = 2.0
     static let architectureScaleStep: CGFloat = 0.2
