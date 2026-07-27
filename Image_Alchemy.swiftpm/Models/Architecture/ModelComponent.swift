@@ -47,24 +47,18 @@ enum ModelComponent: String {
         }
     }
 
-    static func from(_ component: ArchitectureComponent) -> ModelComponent {
+    init(_ component: UnifiedArchitectureComponent) {
         switch component {
-        case .originalImage: return .originalImage
-        case .encoder: return .encoder
-        case .latent: return .latent
-        case .diffusionProcess: return .diffusionProcess
-        case .noisyLatent: return .noisyLatent
-        }
-    }
-
-    static func from(_ component: ReverseArchitectureComponent) -> ModelComponent {
-        switch component {
-        case .noisyLatent: return .noisyLatent
-        case .conditioning: return .conditioning
-        case .unetDenoiser: return .unetDenoiser
-        case .cleanLatent: return .cleanLatent
-        case .decoder: return .decoder
-        case .generatedImage: return .generatedImage
+        case .originalImage: self = .originalImage
+        case .encoder: self = .encoder
+        case .latent: self = .latent
+        case .diffusionProcess: self = .diffusionProcess
+        case .noisyLatent: self = .noisyLatent
+        case .conditioning: self = .conditioning
+        case .unetDenoiser: self = .unetDenoiser
+        case .cleanLatent: self = .cleanLatent
+        case .decoder: self = .decoder
+        case .generatedImage: self = .generatedImage
         }
     }
 }

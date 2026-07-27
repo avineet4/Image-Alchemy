@@ -196,9 +196,9 @@ final class FullPipelineViewModel {
         let step = currentOverviewStep
         let next: ModelComponent
         if let forward = step.highlightForward {
-            next = ModelComponent.from(forward)
+            next = ModelComponent(UnifiedArchitectureComponent.from(forward))
         } else if let reverse = step.highlightReverse {
-            next = ModelComponent.from(reverse)
+            next = ModelComponent(UnifiedArchitectureComponent.from(reverse))
         } else {
             next = .whatIsDiffusion
         }
