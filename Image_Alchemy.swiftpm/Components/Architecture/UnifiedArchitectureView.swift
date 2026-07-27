@@ -81,7 +81,12 @@ struct UnifiedArchitectureView: View {
     private var pixelSpaceColumn: some View {
         VStack(spacing: 16) {
             // Encoder side (forward)
-            ArchitectureContainer(title: "Encoder Pixel Space", color: .pink) {
+            VStack(alignment: .center, spacing: 16) {
+                Text("Encoder Pixel Space")
+                    .font(.caption2)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.secondary)
+                VStack(alignment: .center, spacing: 16) {
                 HStack(spacing: 12) {
                     ArchitectureImageBox(
                         imageName: "OriginalImage",
@@ -103,10 +108,18 @@ struct UnifiedArchitectureView: View {
                         onTap: { selectedComponent = .encoder }
                     )
                 }
+                }
+                .padding(12)
+                .glassEffect(.clear.interactive(), in: .rect(cornerRadius: 16))
             }
             
             // Decoder side (reverse)
-            ArchitectureContainer(title: "Decoder Pixel Space", color: .pink) {
+            VStack(alignment: .center, spacing: 16) {
+                Text("Decoder Pixel Space")
+                    .font(.caption2)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.secondary)
+                VStack(alignment: .center, spacing: 16) {
                 HStack(spacing: 12) {
                     ArchitectureImageBox(
                         imageName: "CreatedImage",
@@ -128,12 +141,19 @@ struct UnifiedArchitectureView: View {
                         onTap: { selectedComponent = .decoder }
                     )
                 }
+                }
+                .padding(12)
+                .glassEffect(.clear.interactive(), in: .rect(cornerRadius: 16))
             }
         }
     }
     
     private var latentSpaceColumn: some View {
-        ArchitectureContainer(title: "Latent Space", color: .green) {
+        VStack(alignment: .center, spacing: 16) {
+            Text("Latent Space")
+                .font(.caption2)
+                .fontWeight(.semibold)
+                .foregroundStyle(.secondary)
             VStack(alignment: .leading, spacing: 40) {
                 // Forward: latent + diffusion -> noisy latent
                 HStack(spacing: 12) {
@@ -201,11 +221,17 @@ struct UnifiedArchitectureView: View {
                 }
                 // .offset(x: 5)
             }
+            .padding(12)
+            .glassEffect(.clear.interactive(), in: .rect(cornerRadius: 16))
         }
     }
     
     private var conditioningColumn: some View {
-        ArchitectureContainer(title: "Conditioning", color: .orange) {
+        VStack(alignment: .center, spacing: 16) {
+            Text("Conditioning")
+                .font(.caption2)
+                .fontWeight(.semibold)
+                .foregroundStyle(.secondary)
             VStack(alignment: .center, spacing: 25) {
                 ConditioningBox(
                     promptText: conditioningText,
@@ -223,6 +249,8 @@ struct UnifiedArchitectureView: View {
                     onTap: { selectedComponent = .conditioning }
                 )
             }
+            .padding(12)
+            .glassEffect(.clear.interactive(), in: .rect(cornerRadius: 16))
         }
     }
     
