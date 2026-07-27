@@ -68,13 +68,4 @@ final class HomeViewModel {
         }
     }
 
-    func presentAppearancePicker() {
-        showAppearancePicker = true
-    }
-
-    func selectAppearance(_ appearance: AppAppearance) {
-        withAnimation(.easeInOut(duration: 0.2)) {
-            self.appearance = appearance
-        }
-    }
 }

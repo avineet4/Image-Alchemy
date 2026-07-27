@@ -31,7 +31,7 @@ struct HomeView: View {
                     AppearanceToggle(
                         currentAppearance: viewModel.appearance,
                         onCycle: viewModel.cycleAppearance,
-                        onShowPicker: viewModel.presentAppearancePicker
+                        onShowPicker: { viewModel.showAppearancePicker = true }
                     )
                     .padding(.bottom, 30)
                 }
@@ -64,7 +64,11 @@ struct HomeView: View {
                 AppearancePickerSheet(
                     selectedAppearance: Binding(
                         get: { viewModel.appearance },
-                        set: { viewModel.selectAppearance($0) }
+                        set: { newAppearance in
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                viewModel.appearance = newAppearance
+                            }
+                        }
                     )
                 )
                     .presentationDetents([.height(280)])
