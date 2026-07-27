@@ -95,7 +95,7 @@ final class QuizViewModel: KnowledgeGenerationModel {
                 message: "Spinning up the **quiz lab**...",
                 icon: "brain.head.profile"
             ),
-            delay: 1.0
+            after: 1.0
         )
         
         // Add contextual setup steps with delays so they appear one by one
@@ -104,7 +104,7 @@ final class QuizViewModel: KnowledgeGenerationModel {
                 message: "Collecting devious diffusion gotchas...",
                 icon: "magnifyingglass"
             ),
-            delay: 1.0
+            after: 1.0
         )
         
         await addGenerationStep(
@@ -112,7 +112,7 @@ final class QuizViewModel: KnowledgeGenerationModel {
                 message: "Crafting multiple-choice traps (the fun kind)...",
                 icon: "list.bullet.rectangle"
             ),
-            delay: 0.7
+            after: 0.7
         )
         
         await addGenerationStep(
@@ -120,7 +120,7 @@ final class QuizViewModel: KnowledgeGenerationModel {
                 message: "Writing wrong answers that look suspiciously right...",
                 icon: "pencil.and.list.clipboard"
             ),
-            delay: 0.7
+            after: 0.7
         )
         
         await addGenerationStep(
@@ -128,7 +128,7 @@ final class QuizViewModel: KnowledgeGenerationModel {
                 message: "Brewing instant feedback potions...",
                 icon: "sparkles"
             ),
-            delay: 0.6
+            after: 0.6
         )
 
         do {

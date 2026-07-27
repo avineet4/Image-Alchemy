@@ -122,28 +122,28 @@ final class MatchTheFollowingViewModel: KnowledgeGenerationModel {
                 message: "Spinning up the **match lab**...",
                 icon: "arrow.left.arrow.right.circle"
             ), 
-            delay: 1.0
+            after: 1.0
         )
         await addGenerationStep(
             GenerationStep(
                 message: "Collecting term–definition pairs from diffusion concepts...",
                 icon: "magnifyingglass"
             ),
-            delay: 1.0
+            after: 1.0
         )
         await addGenerationStep(
             GenerationStep(
                 message: "Shuffling definitions so nothing is too easy...",
                 icon: "shuffle"
             ),
-            delay: 0.7
+            after: 0.7
         )
         await addGenerationStep(
             GenerationStep(
                 message: "Drawing connection lines (metaphorically)...",
                 icon: "line.diagonal"
             ),
-            delay: 0.7
+            after: 0.7
         )
 
         var lastReportedCount = 0

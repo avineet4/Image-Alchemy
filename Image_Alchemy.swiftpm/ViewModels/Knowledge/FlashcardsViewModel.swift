@@ -73,7 +73,7 @@ final class FlashcardsViewModel: KnowledgeGenerationModel {
                 message: "Spinning up the **Image Alchemy** lab...",
                 icon: "doc.text.magnifyingglass"
             ),
-            delay: 1.0
+            after: 1.0
         )
         
         // Add contextual concept extraction + setup steps with delays so they appear one by one
@@ -82,7 +82,7 @@ final class FlashcardsViewModel: KnowledgeGenerationModel {
                 message: "Tracking loose photons in diffusion space...",
                 icon: "brain.head.profile"
             ),
-            delay: 1.0
+            after: 1.0
         )
         
         await addGenerationStep(
@@ -90,7 +90,7 @@ final class FlashcardsViewModel: KnowledgeGenerationModel {
                 message: "Enchanting blank cards with diffusion magic...",
                 icon: "rectangle.stack"
             ),
-            delay: 0.7
+            after: 0.7
         )
         
         await addGenerationStep(
@@ -98,7 +98,7 @@ final class FlashcardsViewModel: KnowledgeGenerationModel {
                 message: "Hand‑crafting exam tricks so future‑you can brag...",
                 icon: "pencil.and.outline"
             ),
-            delay: 0.7
+            after: 0.7
         )
 
         do {
@@ -128,7 +128,7 @@ final class FlashcardsViewModel: KnowledgeGenerationModel {
                                     message: "Carving a new card for **\(conceptName)**...",
                                     icon: "rectangle.stack.badge.plus"
                                 ),
-                                delay: 0.2
+                                after: 0.2
                             )
                         }
                     }
@@ -146,7 +146,7 @@ final class FlashcardsViewModel: KnowledgeGenerationModel {
                         message: "All set! \(flashcards.count) diffusion cards crafted. Time to level up.",
                         icon: "checkmark.circle.fill"
                     ),
-                    delay: 0.3
+                    after: 0.3
                 )
             }
         } catch {

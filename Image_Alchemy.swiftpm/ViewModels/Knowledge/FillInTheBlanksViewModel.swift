@@ -149,28 +149,28 @@ final class FillInTheBlanksViewModel: KnowledgeGenerationModel {
                 message: "Spinning up the **fill-in-the-blank** lab...",
                 icon: "textformat"
             ),
-            delay: 1.0
+            after: 1.0
         )
         await addGenerationStep(
             GenerationStep(
                 message: "Picking key terms from your Image Alchemy walkthrough...",
                 icon: "magnifyingglass"
             ),
-            delay: 1.0
+            after: 1.0
         )
         await addGenerationStep(
             GenerationStep(
                 message: "Carving blanks into sentences...",
                 icon: "minus.rectangle"
             ),
-            delay: 0.7
+            after: 0.7
         )
         await addGenerationStep(
             GenerationStep(
                 message: "Shuffling the word bank...",
                 icon: "shuffle"
             ),
-            delay: 0.7
+            after: 0.7
         )
 
         var lastReportedCount = 0
