@@ -3,7 +3,7 @@ import SwiftUI
 /// ViewModel for Flashcards mode
 @MainActor
 @Observable
-final class FlashcardsViewModel {
+final class FlashcardsViewModel: KnowledgeGenerationModel {
     var flashcards: [Flashcard]
     
     private let generator = FlashcardGenerator.shared
@@ -68,7 +68,7 @@ final class FlashcardsViewModel {
         isFlipped = false
 
         // Initial generation step (appears immediately)
-        await addStepWithDelay(
+            await addGenerationStep(
             GenerationStep(
                 message: "Spinning up the **Image Alchemy** lab...",
                 icon: "doc.text.magnifyingglass"
@@ -77,7 +77,7 @@ final class FlashcardsViewModel {
         )
         
         // Add contextual concept extraction + setup steps with delays so they appear one by one
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Tracking loose photons in diffusion space...",
                 icon: "brain.head.profile"
@@ -85,7 +85,7 @@ final class FlashcardsViewModel {
             delay: 1.0
         )
         
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Enchanting blank cards with diffusion magic...",
                 icon: "rectangle.stack"
@@ -93,7 +93,7 @@ final class FlashcardsViewModel {
             delay: 0.7
         )
         
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Hand‑crafting exam tricks so future‑you can brag...",
                 icon: "pencil.and.outline"
@@ -123,7 +123,7 @@ final class FlashcardsViewModel {
                         conceptNames.append(conceptName)
                         
                         Task { @MainActor in
-                            await self.addStepWithDelay(
+                            await self.addGenerationStep(
                                 GenerationStep(
                                     message: "Carving a new card for **\(conceptName)**...",
                                     icon: "rectangle.stack.badge.plus"
@@ -141,7 +141,7 @@ final class FlashcardsViewModel {
             
             // Final completion step
             if !flashcards.isEmpty {
-                await addStepWithDelay(
+                await addGenerationStep(
                     GenerationStep(
                         message: "All set! \(flashcards.count) diffusion cards crafted. Time to level up.",
                         icon: "checkmark.circle.fill"
@@ -160,11 +160,4 @@ final class FlashcardsViewModel {
         isGenerating = false
     }
     
-    /// Add a generation step with a delay to create staggered appearance
-    private func addStepWithDelay(_ step: GenerationStep, delay: TimeInterval) async {
-        try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
-        withAnimation(.spring(response: 0.5, dampingFraction: 0.78)) {
-            generationSteps.append(step)
-        }
-    }
 }

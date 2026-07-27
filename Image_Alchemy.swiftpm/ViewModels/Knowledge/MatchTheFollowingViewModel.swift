@@ -3,7 +3,7 @@ import SwiftUI
 /// ViewModel for Match the Following mode
 @MainActor
 @Observable
-final class MatchTheFollowingViewModel {
+final class MatchTheFollowingViewModel: KnowledgeGenerationModel {
     var pairs: [MatchPair]
 
     /// Left column text during streaming (one per row); cleared when generation finishes.
@@ -92,13 +92,6 @@ final class MatchTheFollowingViewModel {
     // MARK: - Foundation Models Integration
 
     /// Helper to add a generation step with a delay, so steps appear one by one.
-    private func addStepWithDelay(_ step: GenerationStep, delay: TimeInterval) async {
-        try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
-        withAnimation(.spring(response: 0.5, dampingFraction: 0.78)) {
-            generationSteps.append(step)
-        }
-    }
-
     /// Generate match pairs using the on-device Foundation Model.
     /// - Parameters:
     ///   - topic: Optional narrower topic to focus pairs on.
@@ -124,28 +117,28 @@ final class MatchTheFollowingViewModel {
         generationSteps = []
 
         // Initial generation step (appears immediately)
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Spinning up the **match lab**...",
                 icon: "arrow.left.arrow.right.circle"
             ), 
             delay: 1.0
         )
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Collecting term–definition pairs from diffusion concepts...",
                 icon: "magnifyingglass"
             ),
             delay: 1.0
         )
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Shuffling definitions so nothing is too easy...",
                 icon: "shuffle"
             ),
             delay: 0.7
         )
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Drawing connection lines (metaphorically)...",
                 icon: "line.diagonal"

@@ -3,7 +3,7 @@ import SwiftUI
 /// ViewModel for Quiz mode
 @MainActor
 @Observable
-final class QuizViewModel {
+final class QuizViewModel: KnowledgeGenerationModel {
     var questions: [QuizQuestion]
     
     var currentIndex = 0
@@ -71,14 +71,6 @@ final class QuizViewModel {
 
     // MARK: - Foundation Models Integration
 
-    /// Helper to add a generation step with a delay, so steps appear one by one.
-    private func addStepWithDelay(_ step: GenerationStep, delay: TimeInterval) async {
-        try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
-        withAnimation(.spring(response: 0.5, dampingFraction: 0.78)) {
-            generationSteps.append(step)
-        }
-    }
-
     /// Generate quiz questions using the on-device Foundation Model.
     /// - Parameters:
     ///   - topic: Optional narrower topic to focus questions on.
@@ -98,7 +90,7 @@ final class QuizViewModel {
         generationSteps = []
 
         // Initial generation step (appears after a short delay)
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Spinning up the **quiz lab**...",
                 icon: "brain.head.profile"
@@ -107,7 +99,7 @@ final class QuizViewModel {
         )
         
         // Add contextual setup steps with delays so they appear one by one
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Collecting devious diffusion gotchas...",
                 icon: "magnifyingglass"
@@ -115,7 +107,7 @@ final class QuizViewModel {
             delay: 1.0
         )
         
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Crafting multiple-choice traps (the fun kind)...",
                 icon: "list.bullet.rectangle"
@@ -123,7 +115,7 @@ final class QuizViewModel {
             delay: 0.7
         )
         
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Writing wrong answers that look suspiciously right...",
                 icon: "pencil.and.list.clipboard"
@@ -131,7 +123,7 @@ final class QuizViewModel {
             delay: 0.7
         )
         
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Brewing instant feedback potions...",
                 icon: "sparkles"

@@ -3,7 +3,7 @@ import SwiftUI
 /// ViewModel for Fill in the Blanks mode
 @MainActor
 @Observable
-final class FillInTheBlanksViewModel {
+final class FillInTheBlanksViewModel: KnowledgeGenerationModel {
     var questions: [FillInBlankQuestion]
     
     var currentIndex = 0
@@ -123,13 +123,6 @@ final class FillInTheBlanksViewModel {
 
     // MARK: - Foundation Models Integration
 
-    private func addStepWithDelay(_ step: GenerationStep, delay: TimeInterval) async {
-        try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
-        withAnimation(.spring(response: 0.5, dampingFraction: 0.78)) {
-            generationSteps.append(step)
-        }
-    }
-
     /// Generate fill-in-the-blank questions using the on-device Foundation Model.
     /// - Parameters:
     ///   - topic: Optional narrower topic to focus questions on.
@@ -151,28 +144,28 @@ final class FillInTheBlanksViewModel {
         currentIndex = 0
         generationSteps = []
 
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Spinning up the **fill-in-the-blank** lab...",
                 icon: "textformat"
             ),
             delay: 1.0
         )
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Picking key terms from your Image Alchemy walkthrough...",
                 icon: "magnifyingglass"
             ),
             delay: 1.0
         )
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Carving blanks into sentences...",
                 icon: "minus.rectangle"
             ),
             delay: 0.7
         )
-        await addStepWithDelay(
+        await addGenerationStep(
             GenerationStep(
                 message: "Shuffling the word bank...",
                 icon: "shuffle"
