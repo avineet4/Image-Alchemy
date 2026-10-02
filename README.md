@@ -14,14 +14,6 @@ Image Alchemy turns the diffusion pipeline into something learners can see, mani
 
 The project is designed as an educational experience, not as a production text-to-image generator. Its emphasis is understanding the ideas behind modern diffusion systems through interaction.
 
-## How Codex and GPT-5.6 were used
-
-Codex, powered by GPT-5.6, was used as a development partner throughout the project. It helped explore and understand the SwiftUI codebase, trace how the pipeline views, mathematical visualizations, view models, and Foundation Models service fit together, and turn those details into clearer documentation.
-
-It was also used to iterate on the README, organize the project story, refine the visual identity shown in the documentation, and review implementation details such as iPad-only configuration and on-device model availability checks. The decisions about what Image Alchemy should teach, how the interactions should feel, and how the learning experience should be designed remained part of the app’s own product and engineering direction.
-
-Codex and GPT-5.6 are development tools for this project, not a runtime dependency of the app. When learners generate flashcards, quizzes, matching activities, or fill-in-the-blank exercises inside Image Alchemy, those requests use Apple’s Foundation Models framework locally on the iPad.
-
 ## Inspiration
 
 When I first started learning about AI image generation, I was fascinated by the results but frustrated by the explanations. Articles often skipped straight to the math, videos jumped between equations, and visualizations simplified the process so much that it felt like magic instead of engineering.
